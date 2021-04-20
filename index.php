@@ -77,7 +77,7 @@
 			<div class="col-*-*">
         <div>
           <input type="checkbox" id="privacy" name="privacy">
-          <label for="privacy">Ich habe die <a href="https://bot-passport.herokuapp.com/gdpr.html">Datenschutzerklärung</a> gelesen und verstanden.</label>
+          <label for="privacy">Ich habe die <a href="gdpr.html">Datenschutzerklärung</a> gelesen und verstanden.</label>
         </div>
         <div>
           <input type="checkbox" id="dialogflow" name="dialogflow">
