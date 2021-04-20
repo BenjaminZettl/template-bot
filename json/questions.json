@@ -1,0 +1,52 @@
+[
+  {
+    "question_id": 1,
+    "question_text": " 1. Wie lauten die Daten, die Sie sich notieren sollten?",
+    "answer_options": [
+      {
+        "a": "Erika Mustermann, C01X10T47"
+      },
+      {
+        "b": "Erika Mustermann, C01X00T47"
+      },
+      {
+        "c": "Max Mustermann, C01X10T47"
+      }
+    ],
+    "answer_correct": "b"
+  },
+
+  {
+    "question_id": 2,
+    "question_text": " 1. Wann können Sie an der Verlosung der Amazon Gutscheine teilnehmen?",
+    "answer_options": [
+      {
+        "a": "jetzt"
+      },
+      {
+        "b": "nachdem ich den Reisepass beantragt habe"
+      },
+      {
+        "c": "nachdem ich den Fragebogen ausgefüllt habe"
+      }
+    ],
+    "answer_correct": "c"
+  },
+
+  {
+    "question_id": 3,
+    "question_text": "3. Wie viele und welche Amazon Gutscheine werden verlost?",
+    "answer_options": [
+      {
+        "a": "fünf 10€ Gutscheine"
+      },
+      {
+        "b": "zehn 5€ Gutscheine"
+      },
+      {
+        "c": "ein 40€ Gutschein"
+      }
+    ],
+    "answer_correct": "a"
+  }
+]
