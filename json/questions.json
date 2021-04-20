@@ -1,16 +1,16 @@
 [
   {
     "question_id": 1,
-    "question_text": " 1. Wie lauten die Daten, die Sie sich notieren sollten?",
+    "question_text": " 1. Wie lautet die Antwort auf die erste Frage?",
     "answer_options": [
       {
-        "a": "Erika Mustermann, C01X10T47"
+        "a": "ohne Vergütung"
       },
       {
-        "b": "Erika Mustermann, C01X00T47"
+        "b": "42"
       },
       {
-        "c": "Max Mustermann, C01X10T47"
+        "c": "nach der Umfrage"
       }
     ],
     "answer_correct": "b"
@@ -18,16 +18,16 @@
 
   {
     "question_id": 2,
-    "question_text": " 1. Wann können Sie an der Verlosung der Amazon Gutscheine teilnehmen?",
+    "question_text": " 2. Wie lautet die Antwort auf die zweite Frage?",
     "answer_options": [
       {
-        "a": "jetzt"
+        "a": "nach der Umfrage"
       },
       {
-        "b": "nachdem ich den Reisepass beantragt habe"
+        "b": "ohne Vergütung"
       },
       {
-        "c": "nachdem ich den Fragebogen ausgefüllt habe"
+        "c": "42"
       }
     ],
     "answer_correct": "c"
@@ -35,16 +35,16 @@
 
   {
     "question_id": 3,
-    "question_text": "3. Wie viele und welche Amazon Gutscheine werden verlost?",
+    "question_text": "3. Wie lautet die Antwort auf die dritte Frage?",
     "answer_options": [
       {
-        "a": "fünf 10€ Gutscheine"
+        "a": "42"
       },
       {
-        "b": "zehn 5€ Gutscheine"
+        "b": "ohne Vergütung"
       },
       {
-        "c": "ein 40€ Gutschein"
+        "c": "nach der Umfrage"
       }
     ],
     "answer_correct": "a"

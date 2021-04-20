@@ -1,7 +1,7 @@
 [
   {
     "bot_id": "A1",
-    "bot_name": "Bot Laura 1",
+    "bot_name": "Bot Laura A1",
     "bot_type": "",
     "bot_explanation": "",
     "counter_persistent": 11,
@@ -10,42 +10,12 @@
     "image_url": "laura.png"
   },
   {
-    "bot_id": "A2",
-    "bot_name": "Bot Laura 2",
+    "bot_id": "B2",
+    "bot_name": "Botto B2",
     "bot_type": "",
     "bot_explanation": "",
     "counter_persistent": 22,
     "counter_adjustable": 22,
-    "bot_image": true,
-    "image_url": "laura.png"
-  },
-  {
-    "bot_id": "A3",
-    "bot_name": "Bot Laura 3",
-    "bot_type": "",
-    "bot_explanation": "",
-    "counter_persistent": 3,
-    "counter_adjustable": 3,
-    "bot_image": true,
-    "image_url": "laura.png"
-  },
-  {
-    "bot_id": "B1",
-    "bot_name": "Chatbot Bürgerbüro 1",
-    "bot_type": "",
-    "bot_explanation": "",
-    "counter_persistent": 44,
-    "counter_adjustable": 44,
-    "bot_image": false,
-    "image_url": ""
-  },
-  {
-    "bot_id": "B2",
-    "bot_name": "Chatbot Bürgerbüro 2",
-    "bot_type": "",
-    "bot_explanation": "",
-    "counter_persistent": 55,
-    "counter_adjustable": 55,
     "bot_image": false,
     "image_url": ""
   }
