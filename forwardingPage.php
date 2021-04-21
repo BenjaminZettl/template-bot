@@ -1,10 +1,11 @@
 <?php
-  $bot_setup_old = file_get_contents('json/bot_setup.json');
-  $data = json_decode($bot_setup_old, true);
-  foreach ($data as $bot) {
-    if ($bot["bot_id"] === $_SESSION["version"]) {
-      $bot["counter_persistent"] = $bot["counter_persistent"] + 1;
-      $bot["counter_adjustable"] = $bot["counter_adjustable"] + 1;
+  session_start();
+  $bot_setup = file_get_contents('json/bot_setup.json');
+  $data = json_decode($bot_setup, true);
+  for ($i = 0; $i < count($data); $i++){
+    if ($data[$i]["bot_id"] === $_POST["submit"]){
+      $data[$i]["counter_persistent"] = $data[$i]["counter_persistent"] + 1
+      $data[$i]["counter_adjustable"] = $data[$i]["counter_adjustable"] + 1;
     }
   }
   $bot_setup_new = json_encode($data);
