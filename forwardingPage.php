@@ -1,5 +1,4 @@
 <?php
-  session_start();
   $bot_setup_old = file_get_contents('json/bot_setup.json');
   $data = json_decode($bot_setup_old, true);
   foreach ($data as $bot) {
