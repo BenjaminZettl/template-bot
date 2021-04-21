@@ -4,7 +4,7 @@
   $data = json_decode($bot_setup, true);
   for ($i = 0; $i < count($data); $i++){
     if ($data[$i]["bot_id"] === $_POST["submit"]){
-      $data[$i]["counter_persistent"] = $data[$i]["counter_persistent"] + 1
+      $data[$i]["counter_persistent"] = $data[$i]["counter_persistent"] + 1;
       $data[$i]["counter_adjustable"] = $data[$i]["counter_adjustable"] + 1;
     }
   }
