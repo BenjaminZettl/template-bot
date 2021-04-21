@@ -14,8 +14,8 @@ echo "Falsches Passwort...";
 }
 }
 
-$oldCountJson = file_get_contents('json/counter.json');
-$data = json_decode($oldCountJson, true);
+$bot_setup_old = file_get_contents('json/bot_setup.json');
+$data = json_decode($bot_setup_old, true);
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +27,6 @@ $data = json_decode($oldCountJson, true);
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="js/introductionFunctions.js"></script>
 <title>Reisepass Chatbot Admin</title>
-<script>
-var countA1 = <?php echo $data["1"] ?>;
-var countA2=<?php echo $data["2"] ?>;
-var countA3=<?php echo $data["3"] ?>;
-var countB1=<?php echo $data["4"] ?>;
-var countB2=<?php echo $data["5"] ?>;
-</script>
 </head>
 
 <body>
@@ -42,61 +35,57 @@ var countB2=<?php echo $data["5"] ?>;
   </div>
 
 <?php
-
+//check if session access is granted (user has provided correct password)
 if ($_SESSION["access"] == "okay") {
+// --------------- start of protected content ---------------
 
-// Geschuetzter Bereich...
-?>
-<!-- Content -->
-<div class="container-fluid bg-2" id="content">
-  <div class="row">
+//check if page is reloaded by submitting a reset
+  if(isset($_POST['submit'], $_POST['newCount']))
+  {
+    // reset the counter_adjustable in JSON file using function
+    reset_counter();
+  }
+
+
+  $bot_setup = file_get_contents('json/bot_setup.json');
+  $data = json_decode($bot_setup, true);
+  echo "<script>console.log('" . $data[0]["bot_id"] . "');</script>"; ?>
+  <div class="container" id="content">
+  <? foreach ($data as $bot) {?>
+  <div class="row" style="margin-top:30px">
     <div class="col">
-      <p><b>Chatbot A1</b></br>
-        <form>
-          <input class="button" type="button" onclick="openBot(1)" value="Starten" />
-        </form>
-         freundschaftlich </br>
-         mit Erklärung, dass er menschlich gestaltet ist </br>
-         Abgeschlossene Dialoge: <script>document.write(countA1)</script></br>
-      </p>
-      <p><b>Chatbot A2</b></br>
-        <form>
-          <input class="button" type="button" onclick="openBot(2)" value="Starten" />
-        </form>
-         freundschaftlich </br>
-         ohne Erklärung, dass er menschlich gestaltet ist </br>
-         Abgeschlossene Dialoge: <script>document.write(countA2)</script></br>
-      </p>
-      <p><b>Chatbot A3</b></br>
-        <form>
-          <input class="button" type="button" onclick="openBot(3)" value="Starten" />
-        </form>
-         freundschaftlich </br>
-         mit Erklärung, dass er menschlich gestaltet ist und das er besonders freundschaftlich gestaltet wurde</br>
-         Abgeschlossene Dialoge: <script>document.write(countA3)</script></br>
-      </p>
-      <p><b>Chatbot B1</b></br>
-        <form>
-          <input class="button" type="button" onclick="openBot(4)" value="Starten" />
-        </form>
-         sachlich </br>
-         mit Erklärung, dass er besonders menschlich ist </br>
-         Abgeschlossene Dialoge: <script>document.write(countB1)</script></br>
-      </p>
-      <p><b>Chatbot B2</b></br>
-        <form>
-          <input class="button" type="button" onclick="openBot(5)" value="Starten" />
-        </form>
-         sachlich </br>
-         ohne Erklärung, dass er besonders menschlich ist </br>
-         Abgeschlossene Dialoge: <script>document.write(countB2)</script></br>
-      </p>
-      <a href="logout.php">Logout</a>
+      <p> <b><? echo $bot["bot_id"]; ?> :
+          <? if ($bot["bot_image"] === true){ ?>
+            <img src="<? echo $bot["image_url"]?>" alt="image of <? echo $bot["bot_name"] ?>" width="38">
+          <? } ?>
+          <? echo $bot["bot_name"]; ?></b>
+          <input class="button" type="button" onclick="openBot('<? echo $bot["bot_id"]; ?>')" value="Starten" />
+          </br>
+          <? echo $bot["bot_type"]; ?></br>
+          <? echo $bot["bot_explanation"]; ?></br>
+          <? if ($bot["bot_image"] === true){ ?>
+            mit Bild
+          <? } else {?>
+            kein Bild
+          <? } ?>
+          </br>
+          ewiger Zähler: <? echo $bot["counter_persistent"]; ?></br>
+          aktueller Zähler: <? echo $bot["counter_adjustable"]; ?> </br>
+          <? echo "<script>console.log('" . $bot["counter_adjustable"] . "');</script>"; ?>
+          <form method="post" action="admin.php">
+            <label for="newCount">Wert des aktuellen Zählers neu setzen:</label>
+            <input type="number" id="newCount" name="newCount" min="0" style="width: 4em;" >
+            <button class="button" type="submit" value="<? echo $bot["bot_id"]; ?>" name="submit" onclick="return confirm('Soll der aktuelle Zähler wirklich zurückgesetzt werden?');">setzen</button>
+          </form>
+        </p>
     </div>
   </div>
-<? }else{ // close geschuetzter Bereich
+  <? }
+
+// end of protected content
+}else{
+// start of login form
 ?>
-<!--- Loginformular beginn -->
 <form method="POST" action="">
 <fieldset>
   <div class="container-fluid bg-2" id="content">
@@ -110,8 +99,22 @@ if ($_SESSION["access"] == "okay") {
       </div>
     </div>
 </form>
-<!-- Loginformular ende -->
-<?php } // close Loginform
+<?php }
+// end of login form
+
+//function to reset counter_adjustable in JSON file
+function reset_counter()
+  {
+    $bot_setup = file_get_contents('json/bot_setup.json');
+    $data = json_decode($bot_setup, true);
+    for ($i = 0; $i < count($data); $i++){
+      if ($data[$i]["bot_id"] === $_POST["submit"]){
+        $data[$i]["counter_adjustable"] = $_POST["newCount"];
+      }
+    }
+    $bot_setup_new = json_encode($data);
+    file_put_contents('json/bot_setup.json', $bot_setup_new);
+  }
 ?>
 </body>
 </html>

@@ -72,10 +72,5 @@ $forwardUrl = "forwardingPage.php?PHPSESSID=".session_id();
       </div>
     </form>
   </div>
-
-
-
-
-
 </body>
 </html>
