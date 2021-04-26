@@ -114,7 +114,7 @@
         <form action="comprehensionQuestions.php" method="POST">
           <input name="try" id="try" type="hidden">
           <input name="answers" id="answers" type="hidden">
-          <input class="button" type="submit" onclick="checkAnswers(questionIds, varTry)" value="Starten" />
+          <input class="button" type="button" onclick="checkAnswers(questionIds, varTry)" value="Starten" />
         </form>
         <br>
 		    <p><strong><font color=red><output id="forwardingMessage"></output></font></strong></p>
