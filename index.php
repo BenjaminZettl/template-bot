@@ -24,7 +24,7 @@
 	</div>
 
 	<!-- Content -->
-	<div class="container-fluid bg-2" id="content">
+	<div class="container bg-2" id="content" style="margin-top:40px">
 		<div class="row">
 			<div class="col-*-*">
 				<h4>Herzlich Willkommen zu unserem Experiment.</h4>

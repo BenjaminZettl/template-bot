@@ -3,7 +3,7 @@
   $bot_setup = file_get_contents('json/bot_setup.json');
   $data = json_decode($bot_setup, true);
   for ($i = 0; $i < count($data); $i++){
-    if ($data[$i]["bot_id"] === $_POST["submit"]){
+    if ($data[$i]["bot_id"] === $_SESSION["version"]){
       $data[$i]["counter_persistent"] = $data[$i]["counter_persistent"] + 1;
       $data[$i]["counter_adjustable"] = $data[$i]["counter_adjustable"] + 1;
     }

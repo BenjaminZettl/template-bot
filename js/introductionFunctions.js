@@ -27,6 +27,8 @@ function errorMessage(varTry){
   } else if (varTry===3) {
     var messageText = document.createTextNode("Das ist Ihr letzter Versuch! Lesen Sie die Experimentbeschreibung noch einmal gründlich durch und beantworten Sie anschließend die Fragen erneut.");
     document.getElementById('errorMessage').appendChild(messageText);
+  } else if (varTry>3) {
+    window.open(errorUrl, "_self");
   }
 }
 /*
@@ -57,7 +59,7 @@ function evaluate(i) {
 }
 
 
-function checkAnswers(attempt){
+function checkAnswersOld(attempt){
   if(attempt === 4){
     window.open(errorUrl, "_self");
   }else if(evaluate(array_correct.length)===array_correct.length){
@@ -75,45 +77,6 @@ function checkAnswers(attempt){
   }
 }
 
-// function to get questions from JSON-file specified in path and append them to parent
-function fetchQuestions(path, parentId) {
-  fetch(path)
-    .then(response => response.json())
-    .then(data => {
-      var parent = document.getElementById(parentId);
-      for (let question of data){
-        var questionP = document.createElement("p");
-        var questionText = document.createTextNode(question.question_text);
-        questionP.appendChild(questionText);
-
-        var optionsP = document.createElement("p");
-        for (let option of question.answer_options){
-         var optionInput = document.createElement("input");
-         optionInput.setAttribute("type", "radio");
-         optionInput.setAttribute("name", question.question_id);
-         optionInput.setAttribute("value", Object.keys(option)[0]);
-         if(optionInput.value == "a"){
-           optionInput.checked = true;
-         }
-
-         var optionLabel = document.createElement("label");
-         optionLabel.setAttribute("for", Object.keys(option)[0])
-
-         var labelText = document.createTextNode("\xa0" + Object.values(option)[0]);
-         optionLabel.appendChild(labelText);
-         optionsP.appendChild(optionInput);
-         optionsP.appendChild(optionLabel);
-         linebreak = document.createElement("br");
-         optionsP.appendChild(linebreak);
-
-        }
-
-        parent.appendChild(questionP);
-        parent.appendChild(optionsP);
-      }
-    }
-  )
-}
 
 function openBot(version){
   openWithPost(chatbotUrl, "version", version);
@@ -147,3 +110,17 @@ function validate(varTry) {
             openWithPost('index.php?noconsent=true','try', varTry);
         }
     }
+
+function getAnswers(questionIds){
+  var jsonAnswers = {};
+  questionIds.forEach(function(id){
+    jsonAnswers[id] = $("input[name="+id+"]:checked").val();
+  });
+  return jsonAnswers;
+}
+
+function checkAnswers(questionIds, varTry){
+  document.getElementById("try").value = varTry;
+  document.getElementById("answers").value = JSON.stringify(getAnswers(questionIds));
+  console.log({answers: getAnswers(questionIds), try: varTry});
+}

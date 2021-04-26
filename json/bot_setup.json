@@ -1,1 +1,19 @@
-[{"bot_id":"A1","bot_name":"Bot Laura","bot_type":"menschlich","bot_explanation":"mit Erkl\u00e4rung, dass er menschlich gestaltet ist","counter_persistent":11,"counter_adjustable":"10","bot_image":true,"image_url":"laura.png"},{"bot_id":"B2","bot_name":"Botto","bot_type":"nicht menschlich","bot_explanation":"mit Erkl\u00e4rung, dass er menschlich ist","counter_persistent":22,"counter_adjustable":"7","bot_image":false,"image_url":""}]
+[{
+  "bot_id": "A1",
+  "bot_name": "Bot Laura",
+  "bot_type": "menschlich",
+  "bot_explanation": "mit Erkl\u00e4rung, dass er menschlich gestaltet ist",
+  "counter_persistent": 12,
+  "counter_adjustable": 1,
+  "bot_image": true,
+  "image_url": "laura.png"
+}, {
+  "bot_id": "B2",
+  "bot_name": "Botto",
+  "bot_type": "nicht menschlich",
+  "bot_explanation": "mit Erkl\u00e4rung, dass er menschlich ist",
+  "counter_persistent": 22,
+  "counter_adjustable": 5,
+  "bot_image": false,
+  "image_url": ""
+}]

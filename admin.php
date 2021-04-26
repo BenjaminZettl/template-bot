@@ -48,8 +48,7 @@ if ($_SESSION["access"] == "okay") {
 
 
   $bot_setup = file_get_contents('json/bot_setup.json');
-  $data = json_decode($bot_setup, true);
-  echo "<script>console.log('" . $data[0]["bot_id"] . "');</script>"; ?>
+  $data = json_decode($bot_setup, true);?>
   <div class="container" id="content">
   <? foreach ($data as $bot) {?>
   <div class="row" style="margin-top:30px">
@@ -88,7 +87,7 @@ if ($_SESSION["access"] == "okay") {
 ?>
 <form method="POST" action="">
 <fieldset>
-  <div class="container-fluid bg-2" id="content">
+  <div class="container-fluid bg-2 text-center" id="content">
 
     <div class="row">
       <div class="col">
